@@ -3,7 +3,7 @@ import pandas as pd
 from shapely.geometry import Point
 import random
 import os
-
+import webbrowser
 import folium
 
 print("THIS IS AN EXTRA SCRIPT THAT HOPEFULLY WILL RUN ON EXECUTION")
@@ -35,6 +35,8 @@ except Exception as e:
 try:
   m = gdf.explore(tiles='OpenStreetMap')
   m.save("map_visualization.html")
+  filepath = "file://" + os.path.realpath("map_visualization.html")
+  webbrowser.open_new_tab(filepath)
 except Exception as e:
   print("Failed to display map, encountered error")
   print(e)

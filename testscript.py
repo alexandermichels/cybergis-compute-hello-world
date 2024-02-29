@@ -34,11 +34,10 @@ except Exception as e:
   gdf = gdf.set_crs("EPSG:4326", allow_override=False)
 try:
   print("Checkpoint1")
-  gdf.explore(tiles='OpenStreetMap')
-  # m = gdf.explore(tiles='OpenStreetMap')
-  # m.save("map_visualization.html")
-  # filepath = "file://" + os.path.realpath("map_visualization.html")
-  # webbrowser.open_new_tab(filepath)
+  m = gdf.explore(tiles='OpenStreetMap')
+  m.save("map_visualization.html")
+  filepath = "file://" + os.path.realpath("map_visualization.html")
+  webbrowser.open_new_tab(filepath)
   print("Checkpoint2")
 except Exception as e:
   print("Failed to display map, encountered error")

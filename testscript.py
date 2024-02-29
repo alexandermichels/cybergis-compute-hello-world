@@ -4,6 +4,7 @@ from shapely.geometry import Point
 import random
 import os
 
+import folium
 
 print("THIS IS AN EXTRA SCRIPT THAT HOPEFULLY WILL RUN ON EXECUTION")
 
@@ -32,10 +33,13 @@ try:
 except Exception as e:
   gdf = gdf.set_crs("EPSG:4326", allow_override=False)
 try:
-  gdf.explore(tiles='OpenStreetMap')
+  m = gdf.explore(tiles='OpenStreetMap')
+  m.save("map_visualization.html")
 except Exception as e:
   print("Failed to display map, encountered error")
   print(e)
+
+
 
 RESULTS_FOLDER = os.getcwd()
 gdf.to_file(os.path.join(RESULTS_FOLDER, "result.shp"))

@@ -47,4 +47,5 @@ except Exception as e:
 
 RESULTS_FOLDER = os.getcwd()
 gdf.to_file(os.path.join(RESULTS_FOLDER, "result.shp"))
-print("Saved result to result.shp")
+gdf.to_file("result.geojson", driver='GeoJSON')
+print("Saved result to result.shp, result.geojson")

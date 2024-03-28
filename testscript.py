@@ -8,14 +8,14 @@ import folium
 
 print("THIS IS AN EXTRA SCRIPT THAT HOPEFULLY WILL RUN ON EXECUTION")
 
-def make_random_gdf():
+def make_random_gdf(lat, lon):
   # Define the number of points you want
   num_points = 100
   
   # Generate random points within a specified bounding box
   # Latitude between -90 and 90, Longitude between -180 and 180
-  latitudes = [random.uniform(-90, 90) for _ in range(num_points)]
-  longitudes = [random.uniform(-180, 180) for _ in range(num_points)]
+  latitudes = [random.uniform(-lat, lat) for _ in range(num_points)]
+  longitudes = [random.uniform(-lon, lon) for _ in range(num_points)]
   
   # Create Point geometries
   points = [Point(lon, lat) for lon, lat in zip(longitudes, latitudes)]
@@ -44,8 +44,8 @@ def make_random_gdf():
     print(e)
   return gdf
 
-gdf1 = make_random_gdf()
-gdf2 = make_random_gdf()
+gdf1 = make_random_gdf(45, 90)
+gdf2 = make_random_gdf(90, 180)
 RESULTS_FOLDER = os.getcwd()
 gdf1.to_file(os.path.join(RESULTS_FOLDER, "result.shp"))
 gdf2.to_file("result.geojson", driver='GeoJSON')

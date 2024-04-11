@@ -15,4 +15,6 @@ print(os.environ['SLURM_PROCID'])
 print('job_id')
 print(os.environ['job_id'])
 
+RESULT_FOLDER = os.getenviron('resultfolder')
+
 print(job)
